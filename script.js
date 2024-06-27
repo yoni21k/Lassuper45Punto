@@ -133,8 +133,20 @@ async function trainAndPredict() {
     model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
     model.compile({ loss: 'meanSquaredError', optimizer: 'sgd' });
 
-    // Entrenar el modelo
-    await model.fit(xs, ys, { epochs: 500 });
+    // Entrenar el modelo de manera optimizada
+    const trainingStartTime = performance.now();
+    await model.fit(xs, ys, {
+        epochs: 100, // Reducir el número de épocas
+        callbacks: {
+            onEpochEnd: async (epoch, logs) => {
+                const trainingEndTime = performance.now();
+                const trainingTime = (trainingEndTime - trainingStartTime) / 1000;
+                if (trainingTime > 5) {
+                    model.stopTraining = true; // Detener el entrenamiento si tarda más de 5 segundos
+                }
+            }
+        }
+    });
 
     // Guardar el modelo en localStorage
     await model.save(tf.io.withSaveHandler(async (data) => {
@@ -142,12 +154,13 @@ async function trainAndPredict() {
         return { success: true };
     }));
 
-    // Hacer una predicción
-    const nextResult = await model.predict(tf.tensor2d([normalizedResults[normalizedResults.length - 1]], [1, 1])).data();
+    // Hacer una predicción rápida
+    const nextResult = await model.predict(tf.tensor2d([normalizedResults[normalizedResults.length - 1]], [1, 1]), { batch_size: 1 }).data();
     const denormalizedNextResult = nextResult[0] * maxResult;
 
     predictionOutput.textContent = `Predicción del próximo resultado: ${denormalizedNextResult.toFixed(2)}x.`;
 }
+
 
 async function loadModel() {
     const modelData = localStorage.getItem('model');
