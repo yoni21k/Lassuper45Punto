@@ -1,0 +1,171 @@
+/* Reset de estilos y configuración básica */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    background-image: url('imagen.png'); /* Ruta de tu imagen de fondo */
+    background-size: cover; /* Ajustar imagen para cubrir todo el cuerpo */
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background: linear-gradient(to bottom, #f0f0f06b, #e0e0e091);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.input-section input[type="number"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.input-section button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input-section button:hover {
+    background-color: #0056b3;
+}
+
+.chart-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.results-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.result-block {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 5px;
+    border-radius: 8px;
+    background-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-block.violet {
+    background-color: #6f42c1;
+}
+
+.result-block.fuchsia {
+    background-color:  #ff00ff;
+}
+
+.analysis, .prediction {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.analysis p, .prediction p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Estilos adicionales para elementos específicos */
+
+/* Estilos para botones de control */
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    margin: 0 10px;
+}
+
+/* Estilos para el footer */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+    font-size: 14px;
+}
+
+/* Estilos para el estado de la API */
+.api-status {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.api-status.online {
+    background-color: #28a745;
+}
+
+.api-status.offline {
+    background-color: #dc3545;
+}
+
+/* Media query para ajustes responsivos */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .input-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .input-section input[type="number"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .input-section button {
+        width: 100%;
+        margin-right: 0;
+    }
+}

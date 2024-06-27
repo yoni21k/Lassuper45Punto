@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de Jugadas Aviator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Analizador de Jugadas Aviator</h1>
+        <div class="input-section">
+            <label for="result">Ingrese el resultado:</label>
+            <input type="number" id="result" placeholder="Ejemplo: 2.5">
+            <button id="add-result-button">Agregar Resultado</button>
+        </div>
+        <div class="chart-container">
+            <canvas id="resultsChart"></canvas>
+        </div>
+        <div class="results-container" id="resultsContainer"></div>
+        <div class="analysis">
+            <h2>Análisis:</h2>
+            <p id="analysis-output">Ingrese resultados para ver el análisis.</p>
+        </div>
+        <div class="prediction">
+            <h2>Predicción:</h2>
+            <p id="prediction-output">Esperando resultados suficientes para predecir.</p>
+        </div>
+        <div class="api-status" id="apiStatus"></div> <!-- Div para mostrar el estado de la API -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="script.js"></script>
+</body>
+</html>
